@@ -1,0 +1,11 @@
+#!/bin/env bash
+root=$(dirname "$0")/..
+var="$root/var/htm"
+url="https://biblehub.com/interlinear/matthew"
+mkdir -p "$var"
+for chapter in {1..28}; do
+    filename="$chapter.htm"
+    filepath="$var/$filename"
+    echo Downloading chapter $chapter
+    curl "$url/$filename" -o "$filepath" -s
+done
